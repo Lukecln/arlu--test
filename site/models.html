@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arlu - Modèles</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-link">
+    <img src="logo.png" alt="Logo Arlu" />
+  </a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="models.html">Modèles</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2>Nos modèles</h2>
+
+  <div class="filters category-filters" role="group" aria-label="Filtrer les modèles par catégorie">
+    <button type="button" data-category="all" class="active" aria-pressed="true">Tous</button>
+    <button type="button" data-category="sport" aria-pressed="false">Sportive</button>
+    <button type="button" data-category="suv" aria-pressed="false">SUV</button>
+    <button type="button" data-category="berline" aria-pressed="false">Berline</button>
+    <button type="button" data-category="citadine" aria-pressed="false">Citadine</button>
+  </div>
+  
+  <div class="filters brand-filters" role="group" aria-label="Filtrer les modèles par marque">
+    <button type="button" data-brand="all" class="active" aria-pressed="true">Toutes les marques</button>
+    <button type="button" data-brand="audi" aria-pressed="false">Audi</button>
+    <button type="button" data-brand="bentley" aria-pressed="false">Bentley</button>
+    <button type="button" data-brand="bmw" aria-pressed="false">BMW</button>
+    <button type="button" data-brand="dodge" aria-pressed="false">Dodge</button>
+    <button type="button" data-brand="ferrari" aria-pressed="false">Ferrari</button>
+    <button type="button" data-brand="mercedes" aria-pressed="false">Mercedes</button>
+    <button type="button" data-brand="porsche" aria-pressed="false">Porsche</button>
+  </div>
+
+  <div class="model-grid" id="modelGrid">
+  <a href="modeles/modeles2.html" class="model-card" data-category="sport" data-brand="audi">
+      <img src="car_pics/audi_r8.png" alt="Audi R8 Arlu" />
+      <div class="model-card-content">
+        <h3>Audi R8 Arlu</h3>
+        <div class="model-meta">Sportive • Audi</div>
+        <div class="model-desc">V10 atmosphérique, design racé, sensations extrêmes.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">620 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,1 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 207 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles3.html" class="model-card" data-category="suv" data-brand="bentley">
+      <img src="car_pics/bentley_bentayga.png" alt="Bentley Bentayga Arlu" />
+      <div class="model-card-content">
+        <h3>Bentley Bentayga Arlu</h3>
+        <div class="model-meta">SUV • Bentley</div>
+        <div class="model-desc">Luxe, puissance et confort ultime pour tous les terrains.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">635 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 245 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles6.html" class="model-card" data-category="suv" data-brand="mercedes">
+      <img src="car_pics/g_arlu.png" alt="Mercedes Classe G Arlu" />
+      <div class="model-card-content">
+        <h3>Mercedes AMG Classe G Arlu</h3>
+        <div class="model-meta">SUV • Mercedes</div>
+        <div class="model-desc">Icône tout-terrain, moteur V8, raffinement et robustesse.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">585 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">4,5 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 226 600€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles7.html" class="model-card" data-category="berline" data-brand="mercedes">
+      <img src="car_pics/e63s_arlu.png" alt="e63s Arlu" />
+      <div class="model-card-content">
+        <h3>Mercedes AMG e63s Arlu</h3>
+        <div class="model-meta">Berline • Mercedes</div>
+        <div class="model-desc">Berline sportive, 4MATIC+, élégance et performances.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">612 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,4 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 150 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles4.html" class="model-card" data-category="suv" data-brand="porsche">
+      <img src="car_pics/Cayenne.png" alt="Cayenne" />
+      <div class="model-card-content">
+        <h3>Porsche Cayenne turbo Arlu</h3>
+        <div class="model-meta">SUV • Porsche</div>
+        <div class="model-desc">SUV dynamique, moteur turbo, esprit Porsche.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">550 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 192 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles1.html" class="model-card" data-category="sport" data-brand="bmw">
+      <img src="car_pics/m4.png" alt="m4" />
+      <div class="model-card-content">
+        <h3>BMW M4 biturbo Arlu</h3>
+        <div class="model-meta">Sportive • BMW</div>
+        <div class="model-desc">Coupé sportif, biturbo, précision allemande.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">510 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 148 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles9.html" class="model-card" data-category="berline" data-brand="audi">
+      <img src="car_pics/rs6.png" alt="rs6" />
+      <div class="model-card-content">
+        <h3>Audi RS6 Arlu</h3>
+        <div class="model-meta">Berline • Audi</div>
+        <div class="model-desc">Break surpuissant, polyvalence et sportivité.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">600 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,6 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 224 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles10.html" class="model-card" data-category="sport" data-brand="ferrari">
+      <img src="car_pics/458.png" alt="458" />
+      <div class="model-card-content">
+        <h3>Ferrari 458 italia Arlu</h3>
+        <div class="model-meta">Sportive • Ferrari</div>
+        <div class="model-desc">V8 atmosphérique, émotion et design italien.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">570 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,4 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 245 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles5.html" class="model-card" data-category="sport" data-brand="dodge">
+      <img src="car_pics/challenger.png" alt="chlgr" />
+      <div class="model-card-content">
+        <h3>Dodge Challenger SRT Demon 1300+ Arlu</h3>
+        <div class="model-meta">Sportive • Dodge</div>
+        <div class="model-desc">Muscle car extrême, puissance démoniaque.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">1 300 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">2,3 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 210 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles8.html" class="model-card" data-category="berline" data-brand="porsche">
+      <img src="car_pics/panamera.png" alt="Panamera" />
+      <div class="model-card-content">
+        <h3>Porsche Panamera Arlu</h3>
+        <div class="model-meta">Berline • Porsche</div>
+        <div class="model-desc">Berline de luxe, sportivité et confort Porsche.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">630 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,1 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 179 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</main>
+
+<script>
+  // Variables pour stocker les filtres sélectionnés
+  let currentCategory = 'all';
+  let currentBrand = 'all';
+
+  // Applique les deux filtres combinés
+  function applyFilters() {
+    const cards = document.querySelectorAll('.model-card');
+    cards.forEach(card => {
+      const matchCategory = (currentCategory === 'all' || card.dataset.category.toLowerCase() === currentCategory.toLowerCase());
+      const matchBrand = (currentBrand === 'all' || card.dataset.brand.toLowerCase() === currentBrand.toLowerCase());
+      card.style.display = (matchCategory && matchBrand) ? 'block' : 'none';
+    });
+  }
+
+  // Gestion filtres catégorie
+  const categoryButtons = document.querySelectorAll('.category-filters button');
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Met à jour la sélection catégorie
+      currentCategory = button.dataset.category;
+
+      // Met à jour classes active et aria-pressed dans ce groupe
+      categoryButtons.forEach(btn => {
+        const isActive = btn === button;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+
+      applyFilters();
+    });
+  });
+
+  // Gestion filtres marque
+  const brandButtons = document.querySelectorAll('.brand-filters button');
+  brandButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Met à jour la sélection marque
+      currentBrand = button.dataset.brand;
+
+      // Met à jour classes active et aria-pressed dans ce groupe
+      brandButtons.forEach(btn => {
+        const isActive = btn === button;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+
+      applyFilters();
+    });
+  });
+
+  // Applique le filtre initial au chargement
+  applyFilters();
+
+  // Menu déroulant
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = btn.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== parent) d.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>

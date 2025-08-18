@@ -1,0 +1,82 @@
+{
+  "458": {
+    "prix_base": 230000,
+    "options": {
+      "pack_carbone": 12000,
+      "jantes_20": 3500,
+      "sono_bose": 2500
+    }
+  },
+  "audi_r8": {
+    "prix_base": 180000,
+    "options": {
+      "pack_carbone": 9000,
+      "jantes_20": 3200,
+      "sono_bose": 2100
+    }
+  },
+  "bentley_bentayga": {
+    "prix_base": 250000,
+    "options": {
+      "pack_luxe": 15000,
+      "jantes_22": 5000,
+      "sono_naim": 7000
+    }
+  },
+  "cayenne": {
+    "prix_base": 120000,
+    "options": {
+      "pack_sport": 8000,
+      "jantes_21": 4000,
+      "sono_bose": 3000
+    }
+  },
+  "challenger": {
+    "prix_base": 90000,
+    "options": {
+      "pack_racing": 6000,
+      "jantes_20": 2500,
+      "sono_harman": 1800
+    }
+  },
+  "classe_g": {
+    "prix_base": 200000,
+    "options": {
+      "pack_offroad": 10000,
+      "jantes_22": 4500,
+      "sono_burmester": 5000
+    }
+  },
+  "e63s_arlu": {
+    "prix_base": 160000,
+    "options": {
+      "pack_performance": 11000,
+      "jantes_21": 3700,
+      "sono_burmester": 4200
+    }
+  },
+  "m4": {
+    "prix_base": 130000,
+    "options": {
+      "pack_competition": 9500,
+      "jantes_20": 3300,
+      "sono_harman": 2000
+    }
+  },
+  "panamera": {
+    "prix_base": 140000,
+    "options": {
+      "pack_sport": 8500,
+      "jantes_21": 4100,
+      "sono_bose": 3200
+    }
+  },
+  "rs6": {
+    "prix_base": 150000,
+    "options": {
+      "pack_rs": 10000,
+      "jantes_22": 4800,
+      "sono_bang": 6000
+    }
+  }
+}
