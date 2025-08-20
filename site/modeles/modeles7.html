@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mercedes-AMG E63 S - Arlu</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .specs-grid .spec h3 {
+      color: #2563eb;
+    }
+    .btn-primary, .btn-configure {
+      background: linear-gradient(90deg, #18305c 0%, #2563eb 100%);
+      color: #fff;
+    }
+    .btn-primary:hover, .btn-configure:hover {
+      background: linear-gradient(90deg, #2563eb 0%, #18305c 100%);
+    }
+    .btn-secondary {
+      color: #2563eb;
+      border: 2px solid #2563eb;
+      background: #f4f6fa;
+    }
+    .btn-secondary:hover {
+      background: #e3e8f0;
+      color: #18305c;
+      border: 2px solid #18305c;
+    }
+    .perf-highlights {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2.5rem;
+      background: linear-gradient(90deg, #f7fafd 0%, #e6eef6 100%);
+      border-radius: 2rem;
+      margin: 2.5rem auto 2rem auto;
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      box-shadow: 0 4px 18px rgba(30,95,163,0.07);
+      border: 1px solid #e0e6ef;
+    }
+    .perf-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #1a2536;
+      min-width: 150px;
+      justify-content: center;
+      background: none;
+    }
+    .perf-value {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #1a2536;
+    }
+    .perf-label {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-top: 0.1rem;
+      color: #1a2536;
+    }
+  </style>
+</head>
+<body class="modele-page">
+
+<header class="header-main">
+  <a href="../index.html" class="logo-link">
+    <img src="../logo.png" alt="Logo Arlu" class="logo-img"/>
+  </a>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="../models.html">Modèles</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+</header>
+
+<main class="main-content">
+  <section class="car-hero improved-hero">
+    <div class="hero-bg">
+      <h1 class="car-title">Mercedes-AMG E63 S Arlu</h1>
+    </div>
+    <div class="car-image highlight-image">
+      <img src="../car_pics/e63s_arlu.png" alt="Mercedes-AMG E63 S Arlu" class="main-car-img"/>
+    </div>
+    <p class="description large-desc">
+      La Mercedes-AMG E63 S Arlu arbore une finition <strong>jaune</strong> éclatante, symbole de puissance et de sportivité. 
+      Cette berline haute performance est optimisée par Arlu pour offrir une expérience de conduite inégalée, alliant luxe, technologie avancée et dynamisme extrême.
+    </p>
+    <div class="actions actions-hero">
+      <a href="../configurateur/configurateur_e63s.html" class="btn-primary btn-configure">Configurer ce modèle</a>
+    </div>
+  </section>
+
+  <section class="perf-highlights">
+    <div class="perf-item">
+      <div>
+        <div class="perf-value">4.2 s</div>
+        <div class="perf-label">0-100 km/h</div>
+      </div>
+    </div>
+    <div class="perf-item">
+      <div>
+        <div class="perf-value">250 km/h</div>
+        <div class="perf-label">Vitesse max</div>
+      </div>
+    </div>
+    <div class="perf-item">
+      <div>
+        <div class="perf-value">510 ch</div>
+        <div class="perf-label">Puissance</div>
+      </div>
+    </div>
+    <div class="perf-item">
+      <div>
+        <div class="perf-value">650 Nm</div>
+        <div class="perf-label">Couple</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs-section improved-specs">
+    <h2 class="section-title">Caractéristiques techniques</h2>
+    <div class="specs-grid">
+      <div class="spec"><h3>Moteur</h3><p>V8 Biturbo 4.0 L</p></div>
+      <div class="spec"><h3>Transmission</h3><p>4MATIC+ intégrale</p></div>
+      <div class="spec"><h3>Suspension</h3><p>Suspension pilotée AMG améliorée par Arlu</p></div>
+      <div class="spec"><h3>Jantes</h3><p>20" AMG multibranches Arlu</p></div>
+      <div class="spec"><h3>Intérieur</h3><p>Cuir Nappa noir avec surpiqûres jaunes, inserts carbone</p></div>
+      <div class="spec"><h3>Technologie</h3><p>AMG Performance Media, Burmester 3D, écran tactile 12,3"</p></div>
+      <div class="spec"><h3>Couleur</h3><p>Jaune Arlu spécial mat</p></div>
+      <div class="spec"><h3>Poids</h3><p>1985 kg</p></div>
+      <div class="spec"><h3>Prix estimé</h3><p>a partir de 178 000 €</p></div>
+    </div>
+  </section>
+
+  <div class="actions actions-bottom">
+    <a href="../models.html" class="btn-secondary">← Retour aux modèles</a>
+  </div>
+
+</main>
+
+<script>
+  // Menu déroulant pour toutes les pages
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = btn.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== parent) d.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>

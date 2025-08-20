@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arlu - Préparateur Automobile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700,900&display=swap" rel="stylesheet">
+  <style>
+
+    /* ===== Carte voiture page d'accueil ===== */
+    .model-card-index {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: linear-gradient(90deg, #f7fafd 0%, #e6eef6 100%);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 18px rgba(30,95,163,0.09);
+      border: 1.5px solid #e0e6ef;
+      padding: 48px 0;
+      margin: 24px auto 24px auto;
+      max-width: 350vw;
+      width: 350vw;
+      gap: 180px;
+      min-height: 120px;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .model-card-index:hover {
+      box-shadow: 0 8px 32px rgba(30,95,163,0.16);
+      transform: translateY(-2px) scale(1.015);
+      border-color: #00d2d3;
+    }
+    .model-card-index-img {
+      flex: 0 0 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eaf6f6;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 8px rgba(30,95,163,0.07);
+      padding: 60px;
+      margin-right: 120px;
+    }
+    .model-card-index-img img {
+      max-width: 480px;
+      max-height: 300px;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(230,126,34,0.10);
+      background: #fff;
+    }
+    .model-card-index-img img {
+      max-width: 120px;
+      max-height: 70px;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(230,126,34,0.10);
+      background: #fff;
+    }
+    .model-card-index-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+    .model-card-index-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #14243a;
+      margin-bottom: 2px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(230,126,34,0.07);
+    }
+    .model-card-index-desc {
+      font-size: 0.98rem;
+      color: #444;
+      margin-bottom: 4px;
+    }
+    .model-card-index-infos {
+      display: flex;
+      gap: 12px;
+      margin-top: 2px;
+    }
+    .model-card-index-info {
+      background: #f0f9fa;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 0.98rem;
+      color: #14243a;
+      font-weight: 600;
+      border: 1px solid #e0e6ef;
+      box-shadow: 0 1px 4px rgba(30,95,163,0.04);
+    }
+    @media (max-width: 900px) {
+      .model-card-index {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 18px 8px;
+        gap: 18px;
+      }
+      .model-card-index-img {
+        margin-right: 0;
+        margin-bottom: 12px;
+        justify-content: center;
+      }
+      .model-card-index-img img {
+        max-width: 98vw;
+        max-height: 90px;
+      }
+      .model-card-index-title { font-size: 1.3rem; }
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+      background: #14243a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 32px 0 32px;
+      box-shadow: 0 2px 16px rgba(30,34,40,0.10);
+      border-bottom: 2px solid #00d2d3;
+      min-height: 64px;
+    }
+    body { padding-top: 80px; }
+    .hero-photo-bg {
+      width: 100vw;
+      max-width: 100%;
+      height: 55vh;
+      min-height: 320px;
+      max-height: 520px;
+      background: url('pics/m4_pics_1.jpg') center center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(30,37,54,0.18);
+    }
+    .hero-photo-bg::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      background: linear-gradient(180deg,rgba(20,36,58,0.18) 0%,rgba(20,36,58,0.55) 100%);
+      z-index: 1;
+      border-bottom-left-radius: 0.7em;
+      border-bottom-right-radius: 0.7em;
+    }
+    .hero-photo-bg .logo-bg {
+      position: relative;
+      z-index: 2;
+      background: #18191a;
+      display: inline-block;
+      padding: 18px 32px 14px 32px;
+      border-radius: 18px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(230,126,34,0.10);
+    }
+    .hero-photo-bg img {
+      height: 70px;
+      border-radius: 10px;
+    }
+    .accueil-content {
+      background: rgba(255,255,255,0.97);
+      margin: -60px auto 0 auto;
+      border-radius: 18px;
+      box-shadow: 0 2px 24px rgba(30,34,40,0.10);
+      max-width: 1200px;
+      width: 100%;
+      padding: 48px 32px 32px 32px;
+      position: relative;
+      z-index: 3;
+      box-sizing: border-box;
+    }
+    .accueil-content h1, .accueil-content h2, .accueil-content h3 {
+      color: #14243a;
+      text-shadow: none;
+    }
+    .accueil-content .btn-primary {
+      background: linear-gradient(90deg, #00d2d3 0%, #2563eb 100%);
+      border: none;
+      box-shadow: 0 4px 18px rgba(30,95,163,0.18);
+      color: #fff;
+    }
+    .accueil-content .btn-primary:hover {
+      background: linear-gradient(90deg, #2563eb 0%, #00d2d3 100%);
+    }
+    @media (max-width: 700px) {
+      .hero-photo-bg { height: 32vh; min-height: 120px; }
+      .accueil-content { margin-top: -30px; padding: 24px 4px 18px 4px; }
+    }
+  </style>
+</head>
+<body class="accueil-page" style="min-height:100vh;display:flex;flex-direction:column;">
+
+<header>
+  <a href="index.html" class="logo-link">
+    <img src="logo.png" alt="Logo Arlu" />
+  </a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="models.html">Modèles</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<img src="pics/m4_pics_1.jpg">
+
+<main>
+
+
+  <h2>Préparateur Automobile d’Exception</h2>
+    <p class="description">
+      Arlu sublime votre passion automobile : personnalisation, performance, excellence du détail.<br>
+      <span class="highlight-orange">L’automobile, notre passion, votre signature.</span>
+    </p>
+  
+  </div>
+
+  <div class="section-bar" style="margin-bottom:32px;">
+    <div class="section-bar-content">
+      <h2>À propos de nous</h2>
+      <div class="description">
+        Arlu est une entreprise française dédiée à la préparation automobile d’exception.<br>
+        Notre équipe d’experts transforme chaque véhicule en une pièce unique, alliant technologies de pointe, finitions sur mesure et performances optimisées.<br>
+        Nous accompagnons nos clients passionnés dans la réalisation de projets exclusifs, du conseil à la livraison, avec un engagement total pour la qualité et la discrétion.
+      </div>
+    </div>
+  </div>
+
+  <br><br><br><br><br><br><br>
+
+  <section style="margin:48px auto 0 auto;max-width:900px;" class="description">
+    <h2>Nos points forts</h2>
+    <div class="points-forts">
+      <div class="point-fort">
+        <h3>Préparation sur-mesure</h3>
+        <p>Chaque projet est unique, du design à la mécanique, pour une auto à votre image.</p>
+      </div>
+      <br>
+      <div class="point-fort">
+        <h3>Performance & fiabilité</h3>
+        <p>Optimisation moteur, châssis, électronique, avec un souci constant de la fiabilité.</p>
+      </div>
+      <br>
+      <div class="point-fort">
+        <h3>Finitions haut de gamme</h3>
+        <p>Matériaux nobles, détails soignés, intégration parfaite des technologies modernes.</p>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Une suggestion? Un probleme? Un message?</p>
+    <a href="contact.html">cliquez ici</a>
+  </section>
+  
+
+</main>
+
+<footer class="footer-main" style="margin-top:auto;text-align:center;padding:24px 0 12px 0;">
+  <p>&copy; 2025 Arlu. Tous droits réservés.</p>
+</footer>
+
+<script>
+
+  // Header toujours visible : aucun script nécessaire
+  // Menu déroulant pour toutes les pages
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = btn.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== parent) d.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+
+</body>
+<script>
+  // Scroll automatique léger à l'ouverture pour voir le début du contenu
+  window.addEventListener('DOMContentLoaded', function() {
+    window.scrollTo({ top: 170, behavior: 'smooth' });
+  });
+</script>
+</html>

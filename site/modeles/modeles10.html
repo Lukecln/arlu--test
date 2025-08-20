@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferrari 458 Italia - Arlu</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .specs-grid .spec h3 {
+      color: #2563eb;
+    }
+    .btn-primary, .btn-configure {
+      background: linear-gradient(90deg, #18305c 0%, #2563eb 100%);
+      color: #fff;
+    }
+    .btn-primary:hover, .btn-configure:hover {
+      background: linear-gradient(90deg, #2563eb 0%, #18305c 100%);
+    }
+    .btn-secondary {
+      color: #2563eb;
+      border: 2px solid #2563eb;
+      background: #f4f6fa;
+    }
+    .btn-secondary:hover {
+      background: #e3e8f0;
+      color: #18305c;
+      border: 2px solid #18305c;
+    }
+    .perf-highlights {
+      background: linear-gradient(90deg, #e3e8f0 0%, #f4f6fa 100%);
+      border-radius: 2rem;
+      box-shadow: 0 4px 18px rgba(24,48,92,0.07);
+      border: 1px solid #e3e8f0;
+    }
+    .perf-value, .perf-label {
+      color: #18305c;
+    }
+  </style>
+</head>
+<body class="modele-page">
+
+<header class="header-main">
+  <a href="../index.html" class="logo-link">
+    <img src="../logo.png" alt="Logo Arlu" class="logo-img"/>
+  </a>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="../models.html">Modèles</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+    
+  </nav>
+</header>
+
+<main class="main-content">
+  <section class="car-hero improved-hero">
+    <div class="hero-bg">
+      <h1 class="car-title">Ferrari 458 Italia Arlu</h1>
+    </div>
+    <div class="car-image highlight-image">
+      <img src="../car_pics/458.png" alt="Ferrari 458 Italia Arlu" class="main-car-img"/>
+    </div>
+    <p class="description large-desc">
+      La Ferrari 458 Italia revue par Arlu affiche une teinte <strong>bleu sombre mat</strong> exclusive, qui accentue son élégance féline et son caractère racé.<br>
+      Avec une préparation orientée performance et design, cette version offre une expérience de conduite radicale, sans compromis entre esthétisme et sensations.
+    </p>
+    <div class="actions actions-hero">
+      <a href="../configurateur/configurateur_458.html" class="btn-primary btn-configure">Configurer ce modèle</a>
+    </div>
+  </section>
+
+  <section class="perf-highlights">
+    <div class="perf-item">
+        <div>
+            <div class="perf-value">3,0 s</div>
+            <div class="perf-label">0-100 km/h</div>
+        </div>
+    </div>
+    <div class="perf-item">
+        <div>
+            <div class="perf-value">335 km/h</div>
+            <div class="perf-label">Vitesse max</div>
+        </div>
+    </div>
+    <div class="perf-item">
+        <div>
+            <div class="perf-value">605 ch</div>
+            <div class="perf-label">Puissance</div>
+        </div>
+    </div>
+    <div class="perf-item">
+        <div>
+            <div class="perf-value">570 Nm</div>
+            <div class="perf-label">Couple</div>
+        </div>
+    </div>
+  </section>
+
+  <section class="specs-section improved-specs">
+      <h2 class="section-title">Caractéristiques techniques</h2>
+      <div class="specs-grid">
+        <div class="spec"><h3>Moteur</h3><p>V8 4.5 L atmosphérique</p></div>
+        <div class="spec"><h3>Transmission</h3><p>Propulsion – boîte F1 double embrayage 7 rapports</p></div>
+        <div class="spec"><h3>Échappement</h3><p>Arlu Titanium Race™ avec valves à commande électronique</p></div>
+        <div class="spec"><h3>Jantes</h3><p>20" Arlu Forged Series – finition noir satiné</p></div>
+        <div class="spec"><h3>Intérieur</h3><p>Alcantara noir, inserts carbone brillant, surpiqûres bleu Arlu</p></div>
+        <div class="spec"><h3>Technologie</h3><p>Système telemetry, Launch Control, audio JBL High-End</p></div>
+        <div class="spec"><h3>Couleur</h3><p>Bleu sombre mat</p></div>
+        <div class="spec"><h3>Poids</h3><p>1450 kg</p></div>
+        <div class="spec"><h3>Prix estimé</h3><p>a partir de 245 000 €</p></div>
+     </div>
+  </section>
+
+  <div class="actions actions-bottom">
+    <a href="../models.html" class="btn-secondary">← Retour aux modèles</a>
+  </div>
+
+</main>
+
+<script>
+  // Menu déroulant pour toutes les pages
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = btn.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== parent) d.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>
