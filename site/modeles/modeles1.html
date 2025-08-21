@@ -48,10 +48,6 @@
       justify-content: center;
       background: none;
     }
-    .perf-icon {
-      font-size: 2.2rem;
-      opacity: 0.85;
-    }
     .perf-value {
       font-size: 1.7rem;
       font-weight: 700;
@@ -63,6 +59,46 @@
       opacity: 0.7;
       margin-top: 0.1rem;
       color: #1a2536;
+    }
+    .image-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .main-car-img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+    .main-car-img.active {
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #2563eb;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prev-btn {
+      left: 150px;
+    }
+    .next-btn {
+      right: 150px;
     }
   </style>
 </head>
@@ -93,8 +129,14 @@
       <h1 class="car-title">BMW M4 Arlu </h1>
     </div>
     <div class="car-image highlight-image">
-      <img src="../car_pics/m4.png" alt="BMW M4 Arlu" class="main-car-img"/>
-    </div>
+      <div class="image-carousel">
+        <button class="carousel-btn prev-btn">←</button>
+          <img src="../car_pics/m4/Blanc Minéral.png" alt="BMW M4 Blanc Minéral" class="main-car-img active" />
+          <img src="../car_pics/m4/Noir Saphir métallisé.png" alt="BMW M4 Noir Saphir" class="main-car-img" />
+          <img src="../car_pics/m4/Gris Brooklyn.png" alt="BMW M4 Gris Brooklyn" class="main-car-img" />
+          <img src="../car_pics/m4/Bleu Arlu Satin.png" alt="BMW M4 Bleu Arlu Satin" class="main-car-img" />
+        <button class="carousel-btn next-btn">→</button>
+     </div>
      <p class="description large-desc">
       La BMW M4 revue par Arlu passe à un tout autre niveau de performance et de caractère. Sous le capot, le 6 cylindres en ligne biturbo est optimisé pour délivrer des sensations brutes et une réponse immédiate, grâce à une cartographie moteur spécifique, un échappement en titane, et un système d’admission dynamique.
       Le châssis a été affûté pour un usage piste comme route, avec une suspension réglable Arlu TrackLine, des barres anti-roulis renforcées, et un différentiel piloté. Le look est à la hauteur : teinte Bleu Arlu Satin, ailes élargies, splitter avant carbone et aileron GT arrière.
@@ -171,6 +213,26 @@
     if (!e.target.closest('.dropdown')) {
       document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
     }
+  });
+    // Carousel
+  const images = document.querySelectorAll('.main-car-img');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach(img => img.classList.remove('active'));
+    images[index].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
   });
 </script>
 </body>

@@ -60,6 +60,46 @@
       margin-top: 0.1rem;
       color: #1a2536;
     }
+    .image-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .main-car-img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+    .main-car-img.active {
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #2563eb;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prev-btn {
+      left: 150px;
+    }
+    .next-btn {
+      right: 150px;
+    }
   </style>
 </head>
 <body>
@@ -88,8 +128,14 @@
       <h1 class="car-title">Bentley Bentayga Arlu</h1>
     </div>
     <div class="car-image highlight-image">
-      <img src="../car_pics/bentley_bentayga.png" alt="Bentley Bentayga Arlu" class="main-car-img"/>
-    </div>
+      <div class="image-carousel">
+        <button class="carousel-btn prev-btn">←</button>
+          <img src="../car_pics/bentayga/Blanc Glacier.png" alt="Bentley Bentayga Blanc Glacier" class="main-car-img active" />
+          <img src="../car_pics/bentayga/Vert olive satiné.png" alt="Bentley Bentayga Vert olive satiné" class="main-car-img" />
+          <img src="../car_pics/bentayga/Noir Onyx.png" alt="Bentley Bentayga Noir Onyx" class="main-car-img" />
+          <img src="../car_pics/bentayga/Bleu Sequin.png" alt="Bentley Bentayga Bleu Sequin" class="main-car-img" />
+        <button class="carousel-btn next-btn">→</button>
+     </div>
     <p class="description large-desc">
       Le Bentley Bentayga Arlu dans sa somptueuse finition <strong>vert olive satiné</strong> incarne un style unique et audacieux.
     Ce SUV de luxe allie à la perfection le raffinement britannique et la puissance, avec une touche de personnalité forte signée Arlu.
@@ -165,6 +211,26 @@
     if (!e.target.closest('.dropdown')) {
       document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
     }
+  });
+    // Carousel
+  const images = document.querySelectorAll('.main-car-img');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach(img => img.classList.remove('active'));
+    images[index].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
   });
 </script>
 </body>
