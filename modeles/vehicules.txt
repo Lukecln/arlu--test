@@ -1,0 +1,13 @@
+1 = m4 = 128 100
+2 = audi_r8 = 205 500
+3 = bentley_bentayga = 245 000
+4 = cayenne = 104 600
+5 = challenger = 210 000
+6 = classe_g = 226 600
+7 = e63s_arlu = 178 000
+8 = panamera = 207 000
+9 = rs6 = 138 900
+10 = 458 = 245 000
+11 = escalade = 185 000
+12 = z = 95 000 €
+13 = f150 = 140 000

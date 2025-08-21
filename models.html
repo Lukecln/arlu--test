@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arlu - Modèles</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-link">
+    <img src="logo.png" alt="Logo Arlu" />
+  </a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="models.html">Modèles</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2>Nos modèles</h2>
+  <!-- Nouveau : contrôle de tri (panneau découpé en deux) -->
+  <div class="controls-row" style="display:flex;gap:1rem;align-items:center;justify-content:center;margin:0.8rem 0;">
+    <div class="sort-controls" style="position:relative;">
+      <button id="sortToggle" aria-haspopup="true" aria-expanded="false" class="btn-secondary" type="button">Trier ▾</button>
+
+      <!-- panneau complet : gauche = catégories (1/3), droite = contenu (2/3) -->
+      <div id="sortPanel" role="dialog" aria-label="Options de tri" style="position:absolute;left:50%;transform:translateX(-50%);top:calc(100% + 8px);background:#fff;border:1px solid #e0e6ef;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);display:none;min-width:640px;max-width:90vw;z-index:60;overflow:hidden;">
+        <div style="display:flex;min-height:220px;">
+          <!-- gauche : catégories (empilées verticalement) -->
+          <nav id="sortCategories" style="width:33%;border-right:1px solid #eef2f7;padding:12px 10px;background:#fafcfe;">
+            <div style="display:flex;flex-direction:column;gap:8px;font-size:0.95rem;">
+              <button type="button" class="sort-cat active" data-cat="price" style="width:100%;text-align:left;padding:10px;border:none;background:transparent;cursor:pointer;">Prix</button>
+              <button type="button" class="sort-cat" data-cat="power" style="width:100%;text-align:left;padding:10px;border:none;background:transparent;cursor:pointer;">Puissance</button>
+              <button type="button" class="sort-cat" data-cat="type" style="width:100%;text-align:left;padding:10px;border:none;background:transparent;cursor:pointer;">Type</button>
+            </div>
+          </nav>
+
+          <!-- droite : contenu dynamique -->
+          <div id="sortContent" style="width:67%;padding:14px;">
+            <!-- Prix : tri + fourchette -->
+            <div class="sort-pane" data-for="price" style="display:block;">
+              <h4 style="margin-top:0;margin-bottom:10px;">Prix</h4>
+              <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;">
+                <label><input type="radio" name="priceOrder" value="asc"> Croissant</label>
+                <label><input type="radio" name="priceOrder" value="desc" checked> Décroissant</label>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+                <input id="priceMin" type="number" placeholder="Min €" style="width:120px;padding:6px;border:1px solid #ddd;border-radius:6px;">
+                <span>—</span>
+                <input id="priceMax" type="number" placeholder="Max €" style="width:120px;padding:6px;border:1px solid #ddd;border-radius:6px;">
+                <button id="applyPriceRange" class="btn-secondary" type="button" style="margin-left:auto;">Appliquer</button>
+                <button id="clearPriceRange" type="button" style="margin-left:8px;background:none;border:1px solid #ddd;padding:6px;border-radius:6px;cursor:pointer;">Réinitialiser</button>
+              </div>
+            </div>
+
+            <!-- Puissance : tri + fourchette -->
+            <div class="sort-pane" data-for="power" style="display:none;">
+              <h4 style="margin-top:0;margin-bottom:10px;">Puissance</h4>
+              <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;">
+                <label><input type="radio" name="powerOrder" value="asc"> Croissant</label>
+                <label><input type="radio" name="powerOrder" value="desc" checked> Décroissant</label>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+                <input id="powerMin" type="number" placeholder="Min ch" style="width:120px;padding:6px;border:1px solid #ddd;border-radius:6px;">
+                <span>—</span>
+                <input id="powerMax" type="number" placeholder="Max ch" style="width:120px;padding:6px;border:1px solid #ddd;border-radius:6px;">
+                <button id="applyPowerRange" class="btn-secondary" type="button" style="margin-left:auto;">Appliquer</button>
+                <button id="clearPowerRange" type="button" style="margin-left:8px;background:none;border:1px solid #ddd;padding:6px;border-radius:6px;cursor:pointer;">Réinitialiser</button>
+              </div>
+            </div>
+
+            <!-- Type : cases à cocher -->
+            <div class="sort-pane" data-for="type" style="display:none;">
+              <h4 style="margin-top:0;margin-bottom:10px;">Type</h4>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+                <label><input type="checkbox" class="type-checkbox" value="sport" checked> Sportive</label>
+                <label><input type="checkbox" class="type-checkbox" value="suv" checked> SUV</label>
+                <label><input type="checkbox" class="type-checkbox" value="berline" checked> Berline</label>
+                <label><input type="checkbox" class="type-checkbox" value="citadine" checked> Citadine</label>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <button id="applyTypeFilter" class="btn-secondary" type="button">Appliquer</button>
+                <button id="clearTypeFilter" type="button" style="background:none;border:1px solid #ddd;padding:6px;border-radius:6px;cursor:pointer;">Réinitialiser</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- pied du panneau : fermer -->
+        <div style="text-align:right;padding:8px 12px;border-top:1px solid #f0f4f8;background:#fafcff;">
+          <button id="closeSortPanel" type="button" style="background:none;border:1px solid #ddd;padding:8px 10px;border-radius:8px;cursor:pointer;">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="model-grid" id="modelGrid">
+  <a href="modeles/modeles2.html" class="model-card" data-category="sport" data-brand="audi" data-power="620" data-price="205500">
+      <img src="car_pics/R8/Bleu sombre métallisé.png" alt="Audi R8 Bleu" class="main-car-img" />
+      <div class="model-card-content">
+        <h3>Audi R8 Arlu</h3>
+        <div class="model-meta">Sportive • Audi</div>
+        <div class="model-desc">V10 atmosphérique, design racé, sensations extrêmes.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">620 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,1 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 205 500€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles3.html" class="model-card" data-category="suv" data-brand="bentley" data-power="635" data-price="245000">
+      <img src="car_pics/bentayga/Blanc Glacier.png" alt="Bentley Bentayga Arlu" />
+      <div class="model-card-content">
+        <h3>Bentley Bentayga Arlu</h3>
+        <div class="model-meta">SUV • Bentley</div>
+        <div class="model-desc">Luxe, puissance et confort ultime pour tous les terrains.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">635 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 245 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles6.html" class="model-card" data-category="suv" data-brand="mercedes" data-power="585" data-price="226600">
+      <img src="car_pics/G63/Blanc Polaire.png" alt="Mercedes Classe G Arlu" />
+      <div class="model-card-content">
+        <h3>Mercedes AMG Classe G Arlu</h3>
+        <div class="model-meta">SUV • Mercedes</div>
+        <div class="model-desc">Icône tout-terrain, moteur V8, raffinement et robustesse.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">585 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">4,5 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 226 600€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles7.html" class="model-card" data-category="berline" data-brand="mercedes" data-power="612" data-price="178000">
+      <img src="car_pics/E63/Blanc Polaire.png" alt="e63s Arlu" />
+      <div class="model-card-content">
+        <h3>Mercedes AMG e63s Arlu</h3>
+        <div class="model-meta">Berline • Mercedes</div>
+        <div class="model-desc">Berline sportive, 4MATIC+, élégance et performances.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">612 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,4 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 178 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles4.html" class="model-card" data-category="suv" data-brand="porsche" data-power="550" data-price="104600">
+      <img src="car_pics/Cayenne/Blanc Carrera.png" alt="Cayenne" />
+      <div class="model-card-content">
+        <h3>Porsche Cayenne turbo Arlu</h3>
+        <div class="model-meta">SUV • Porsche</div>
+        <div class="model-desc">SUV dynamique, moteur turbo, esprit Porsche.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">550 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 104 600€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles1.html" class="model-card" data-category="sport" data-brand="bmw" data-power="510" data-price="128100">
+      <img src="car_pics/m4/Blanc Minéral.png" alt="m4" />
+      <div class="model-card-content">
+        <h3>BMW M4 biturbo Arlu</h3>
+        <div class="model-meta">Sportive • BMW</div>
+        <div class="model-desc">Coupé sportif, biturbo, précision allemande.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">510 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,9 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 128 100€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles9.html" class="model-card" data-category="berline" data-brand="audi" data-power="600" data-price="138900">
+      <img src="car_pics/rs6/Rouge Tango.png" alt="rs6" />
+      <div class="model-card-content">
+        <h3>Audi RS6 Arlu</h3>
+        <div class="model-meta">Berline • Audi</div>
+        <div class="model-desc">Break surpuissant, polyvalence et sportivité.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">600 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,6 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 138 900€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles10.html" class="model-card" data-category="sport" data-brand="ferrari" data-power="570" data-price="245000">
+      <img src="car_pics/458/Rosso Corsa.png" alt="458" />
+      <div class="model-card-content">
+        <h3>Ferrari 458 italia Arlu</h3>
+        <div class="model-meta">Sportive • Ferrari</div>
+        <div class="model-desc">V8 atmosphérique, émotion et design italien.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">570 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,4 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 245 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles5.html" class="model-card" data-category="sport" data-brand="dodge" data-power="1300" data-price="210000">
+      <img src="car_pics/challenger/Bleu sombre métallisé.png" alt="chlgr" />
+      <div class="model-card-content">
+        <h3>Dodge Challenger SRT Demon 1300+ Arlu</h3>
+        <div class="model-meta">Sportive • Dodge</div>
+        <div class="model-desc">Muscle car extrême, puissance démoniaque.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">1 300 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">2,3 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 210 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <a href="modeles/modeles8.html" class="model-card" data-category="berline" data-brand="porsche" data-power="630" data-price="207000">
+      <img src="car_pics/panamera/Rouge Tango.png" alt="Panamera" />
+      <div class="model-card-content">
+        <h3>Porsche Panamera Arlu</h3>
+        <div class="model-meta">Berline • Porsche</div>
+        <div class="model-desc">Berline de luxe, sportivité et confort Porsche.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">630 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,1 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 207 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <!-- Nouvelle carte : Cadillac Escalade Arlu -->
+  <a href="modeles/modeles11.html" class="model-card" data-category="suv" data-brand="cadillac" data-power="720" data-price="185000">
+      <img src="car_pics/Escalade/Blanc Perle.png" alt="Cadillac Escalade Arlu" />
+      <div class="model-card-content">
+        <h3>Cadillac Escalade Arlu</h3>
+        <div class="model-meta">SUV • Cadillac</div>
+        <div class="model-desc">SUV de grand luxe, préparation Arlu : puissance et confort.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">720 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">4,3 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 185 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <!-- Nouvelle carte : Nissan Z Arlu -->
+  <a href="modeles/modeles12.html" class="model-card" data-category="sport" data-brand="nissan" data-power="450" data-price="65000">
+      <img src="car_pics/nissan_z/Bleu Arlu.png" alt="Nissan Z Arlu" />
+      <div class="model-card-content">
+        <h3>Nissan Z Arlu</h3>
+        <div class="model-meta">Sportive • Nissan</div>
+        <div class="model-desc">Sportive revue par Arlu : préparation moteur, châssis optimisé et design agressif.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">450 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">3,6 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 95 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  <!-- Nouvelle carte : Ford F‑150 Arlu -->
+  <a href="modeles/modeles13.html" class="model-card" data-category="truck" data-brand="ford" data-power="850" data-price="140000">
+      <img src="car_pics/f150/Gris métallisé.png" alt="Ford F150 Arlu" />
+      <div class="model-card-content">
+        <h3>Ford F‑150 Arlu</h3>
+        <div class="model-meta">Pick‑up • Ford</div>
+        <div class="model-desc">V8 compresseur Arlu, 850 ch — préparation châssis et look offroad signé Arlu.</div>
+        <div class="perf-highlights" style="margin:12px 0 0 0;">
+          <div class="perf-item"><div><div class="perf-value">850 ch</div><div class="perf-label">Puissance</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">4,4 s</div><div class="perf-label">0-100 km/h</div></div></div>
+          <div class="perf-item"><div><div class="perf-value">Dès 140 000€</div><div class="perf-label">Prix</div></div></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</main>
+
+<script>
+  // Variables pour stocker les filtres sélectionnés
+  let currentCategory = 'all';
+  let currentBrand = 'all';
+
+  // Applique les deux filtres combinés
+  function applyFilters() {
+    const cards = document.querySelectorAll('.model-card');
+    cards.forEach(card => {
+      const matchCategory = (currentCategory === 'all' || card.dataset.category.toLowerCase() === currentCategory.toLowerCase());
+      const matchBrand = (currentBrand === 'all' || card.dataset.brand.toLowerCase() === currentBrand.toLowerCase());
+      card.style.display = (matchCategory && matchBrand) ? 'block' : 'none';
+    });
+  }
+
+  // Nouveau : écoute des selects (remplace l'ancien code basé sur des boutons)
+  const categorySelect = document.getElementById('categoryFilter');
+  if (categorySelect) {
+    categorySelect.addEventListener('change', () => {
+      currentCategory = categorySelect.value;
+      applyFilters();
+    });
+  }
+
+  const brandSelect = document.getElementById('brandFilter');
+  if (brandSelect) {
+    brandSelect.addEventListener('change', () => {
+      currentBrand = brandSelect.value;
+      applyFilters();
+    });
+  }
+
+  // Applique le filtre initial au chargement
+  applyFilters();
+
+  // Menu déroulant (Services)
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = btn.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== parent) d.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // --- Nouveau JS pour panneau de tri ---
+  (function() {
+    const sortToggle = document.getElementById('sortToggle');
+    const sortPanel = document.getElementById('sortPanel');
+    const sortCats = document.querySelectorAll('.sort-cat');
+    const panes = document.querySelectorAll('.sort-pane');
+    const modelGrid = document.getElementById('modelGrid');
+
+    // helpers : show/hide panel
+    function openPanel() { sortPanel.style.display = 'block'; sortToggle.setAttribute('aria-expanded','true'); }
+    function closePanel() { sortPanel.style.display = 'none'; sortToggle.setAttribute('aria-expanded','false'); }
+
+    // show selected pane
+    function showPane(name) {
+      panes.forEach(p => p.style.display = (p.dataset.for === name) ? 'block' : 'none');
+      sortCats.forEach(c => c.classList.toggle('active', c.dataset.cat === name));
+    }
+
+    // toggle panel on button
+    sortToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (sortPanel.style.display === 'block') closePanel(); else { openPanel(); showPane('price'); }
+    });
+
+    document.getElementById('closeSortPanel').addEventListener('click', closePanel);
+    document.addEventListener('click', function(e) { if (!e.target.closest('.sort-controls')) closePanel(); });
+
+    // category buttons left
+    sortCats.forEach(btn => {
+      btn.addEventListener('click', () => showPane(btn.dataset.cat));
+    });
+
+    // Sorting functions (reuse logic)
+    function sortByNumeric(attribute, desc = true) {
+      const cards = Array.from(modelGrid.querySelectorAll('.model-card'));
+      cards.sort((a,b) => {
+        const na = Number(a.dataset[attribute]) || 0;
+        const nb = Number(b.dataset[attribute]) || 0;
+        return desc ? nb - na : na - nb;
+      });
+      cards.forEach(c => modelGrid.appendChild(c));
+    }
+
+    // Price order radios
+    document.querySelectorAll('input[name="priceOrder"]').forEach(r => {
+      r.addEventListener('change', function() {
+        sortByNumeric('price', r.value === 'desc');
+      });
+    });
+
+    // Power order radios
+    document.querySelectorAll('input[name="powerOrder"]').forEach(r => {
+      r.addEventListener('change', function() {
+        sortByNumeric('power', r.value === 'desc');
+      });
+    });
+
+    // Apply / clear price range
+    const priceMin = document.getElementById('priceMin'), priceMax = document.getElementById('priceMax');
+    document.getElementById('applyPriceRange').addEventListener('click', function() {
+      const min = Number(priceMin.value) || 0;
+      const max = Number(priceMax.value) || Infinity;
+      document.querySelectorAll('.model-card').forEach(card => {
+        const p = Number(card.dataset.price) || 0;
+        card.style.display = (p >= min && p <= max) ? 'block' : 'none';
+      });
+    });
+    document.getElementById('clearPriceRange').addEventListener('click', function() {
+      priceMin.value = ''; priceMax.value = '';
+      document.querySelectorAll('.model-card').forEach(card => card.style.display = 'block');
+    });
+
+    // Apply / clear power range
+    const powerMin = document.getElementById('powerMin'), powerMax = document.getElementById('powerMax');
+    document.getElementById('applyPowerRange').addEventListener('click', function() {
+      const min = Number(powerMin.value) || 0;
+      const max = Number(powerMax.value) || Infinity;
+      document.querySelectorAll('.model-card').forEach(card => {
+        const p = Number(card.dataset.power) || 0;
+        card.style.display = (p >= min && p <= max) ? 'block' : 'none';
+      });
+    });
+    document.getElementById('clearPowerRange').addEventListener('click', function() {
+      powerMin.value = ''; powerMax.value = '';
+      document.querySelectorAll('.model-card').forEach(card => card.style.display = 'block');
+    });
+
+    // Type filter (checkboxes)
+    function applyTypeSelection(selected) {
+      // if none selected, show all
+      if (!selected.length) {
+        document.querySelectorAll('.model-card').forEach(card => card.style.display = 'block');
+        return;
+      }
+      document.querySelectorAll('.model-card').forEach(card => {
+        card.style.display = selected.includes(card.dataset.category) ? 'block' : 'none';
+      });
+    }
+    document.getElementById('applyTypeFilter').addEventListener('click', function() {
+      const checked = Array.from(document.querySelectorAll('.type-checkbox:checked')).map(cb => cb.value);
+      applyTypeSelection(checked);
+    });
+    document.getElementById('clearTypeFilter').addEventListener('click', function() {
+      document.querySelectorAll('.type-checkbox').forEach(cb => cb.checked = true);
+      document.querySelectorAll('.model-card').forEach(card => card.style.display = 'block');
+    });
+
+  })();
+
+  const carousels = document.querySelectorAll('.model-card .image-carousel');
+  carousels.forEach(carousel => {
+    const images = [
+      "car_pics/audi_r8_bleu.png",  // Bleu Arlu
+      "car_pics/audi_r8_gris.png",  // Gris Daytona
+      "car_pics/audi_r8_noir.png",  // Noir Mythos
+      "car_pics/audi_r8_rouge.png"  // Rouge Tango
+    ];
+    let currentIndex = 0;
+    const imgElement = carousel.querySelector('.main-car-img');
+    imgElement.src = images[currentIndex]; // Affiche l'image initiale
+
+    carousel.querySelector('.prev-btn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      imgElement.src = images[currentIndex]; // Met à jour l'image affichée
+    });
+
+    carousel.querySelector('.next-btn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      imgElement.src = images[currentIndex]; // Met à jour l'image affichée
+    });
+  });
+  // ...existing code (autres scripts) ...
+</script>
+</body>
+</html>
